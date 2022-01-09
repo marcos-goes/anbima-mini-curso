@@ -32,4 +32,8 @@ public class SalaReuniaoService {
         return this.salas;
     }
 
+    public void incluirNovaSalaReuniao(SalaReuniao novaSala){
+        this.salas.add(novaSala);
+    }
+
 }

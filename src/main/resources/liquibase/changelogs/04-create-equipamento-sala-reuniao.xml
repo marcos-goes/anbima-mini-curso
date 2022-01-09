@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.3.xsd
+    http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+
+    <changeSet id="04.1" author="Marcos Goes">
+        <createTable tableName="equipamento_sala_reuniao">
+            <column name="id_sala_reuniao" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="id_equipamento" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+        <addPrimaryKey  tableName="equipamento_sala_reuniao"
+                        columnNames="id_sala_reuniao, id_equipamento"
+                        constraintName="pk_equipamento_sala_reuniao" />
+
+        <addForeignKeyConstraint  baseTableName="equipamento_sala_reuniao"
+                                  baseColumnNames="id_sala_reuniao"
+                                  constraintName="fk_equipamento_sala_reuniao_sala_reuniao"
+                                  referencedColumnNames="id"
+                                  referencedTableName="sala_reuniao" />
+
+        <addForeignKeyConstraint  baseTableName="equipamento_sala_reuniao"
+                                  baseColumnNames="id_equipamento"
+                                  constraintName="fk_equipamento_sala_reuniao_equipamento"
+                                  referencedColumnNames="id"
+                                  referencedTableName="equipamento" />
+    </changeSet>
+</databaseChangeLog>
